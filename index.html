@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Driver's License Generator</title>
+</head>
+<body>
+    <!-- <div class="form">
+        <input id="nameInput" placeholder="red" type="text">
+        <button id="generate">Generate</button>
+      </div>
+
+      <div id="output"></div>
+
+      <div id="pic">
+          <img src="" alt="">
+      </div>
+        <ul>
+        <li id="DOB"></li>
+        <li id="EXP"></li>
+        </ul> -->
+
+        <div class="container my-5 mx-auto">
+            <h1 class="text-center">Driver's License Generator</h1>
+            <h4 class="text-center">Generate an ID using a first name!</h4>
+            <div class="" id="input">
+                    <div class="col2">
+                        <label for="name" class="form-label">Enter a name</label>
+                        <input type="text" name="name" class="form-control col" id="nameInput" placeholder="red">
+                    </div> 
+                    <div class="col">
+                        <button id="generate">Generate</button>
+                    </div>
+    
+
+            </div><br>
+            
+    
+            <div class="card mx-auto" style="width:815px;">
+                <div class="card__header">
+                    <h2><strong>Driver License</strong></h2>
+                </div>
+    
+                <div class="card__body">
+                    <div class="card__body-image">
+                        <div id="pic"></div>
+                        <!-- <div class="card__body-signature"> -->
+                        <img id="signature" src="assets/signature.png" alt="">
+                        <!-- </div> -->
+                    </div>
+                    
+        
+                    <div class="card__body-info">
+                        <!-- <ul> -->
+                            <!-- <li>ID: 4573-13425-22</li>
+                            <li id="NAME">Name:</li>
+                            <li id="DOB">DOB: </li>
+                            <li>Sex: <strong>Male</strong></li>
+                            <li>NTN: <strong>ZE</strong></li>
+                            <li id="EXP">EXP: <strong>current date + 5yrs</strong></li>
+                            <br>
+                            <br>
+                            <li>CLASS: <strong>B</strong></li> -->
+                        <!-- </ul> -->
+                        <div id="output"></div>
+                        <div id="name"></div>
+                        <ul>
+                            <li id="DOB"></li>
+                            <li id="EXP"></li>
+                        </ul>
+                        <img src="assets/barcode.svg">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+</body>
+<script src="card_generate.js"></script>
+</html>
