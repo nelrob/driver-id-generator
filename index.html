@@ -1,83 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link rel="stylesheet" href="styles/card_style.css" />
+    <link rel="icon" type="image/x-icon" href="/assets/icon.ico">
     <title>Driver's License Generator</title>
 </head>
+
 <body>
-    <!-- <div class="form">
-        <input id="nameInput" placeholder="red" type="text">
-        <button id="generate">Generate</button>
-      </div>
-
-      <div id="output"></div>
-
-      <div id="pic">
-          <img src="" alt="">
-      </div>
-        <ul>
-        <li id="DOB"></li>
-        <li id="EXP"></li>
-        </ul> -->
-
-        <div class="container my-5 mx-auto">
-            <h1 class="text-center">Driver's License Generator</h1>
-            <h4 class="text-center">Generate an ID using a first name!</h4>
-            <div class="" id="input">
-                    <div class="col2">
-                        <label for="name" class="form-label">Enter a name</label>
-                        <input type="text" name="name" class="form-control col" id="nameInput" placeholder="red">
-                    </div> 
-                    <div class="col">
-                        <button id="generate">Generate</button>
-                    </div>
-    
-
-            </div><br>
-            
-    
-            <div class="card mx-auto" style="width:815px;">
-                <div class="card__header">
-                    <h2><strong>Driver License</strong></h2>
+    <div class="container my-2 mx-auto">
+        <h1 class="text-center">Driver's License Generator</h1>
+        <h4 class="text-center mb-3">Generate an ID using a first name!</h4>
+        <div class="" id="input">
+            <div class="input-group">
+                <input type="text" class="form-control" id="nameInput" placeholder="Enter a name" />
+                <div class="input-group-append">
+                    <button id="generate" class="btn btn-primary form-control">
+                        Generate
+                    </button>
                 </div>
-    
-                <div class="card__body">
-                    <div class="card__body-image">
-                        <div id="pic"></div>
-                        <!-- <div class="card__body-signature"> -->
-                        <img id="signature" src="assets/signature.png" alt="">
-                        <!-- </div> -->
-                    </div>
-                    
-        
-                    <div class="card__body-info">
-                        <!-- <ul> -->
-                            <!-- <li>ID: 4573-13425-22</li>
-                            <li id="NAME">Name:</li>
-                            <li id="DOB">DOB: </li>
-                            <li>Sex: <strong>Male</strong></li>
-                            <li>NTN: <strong>ZE</strong></li>
-                            <li id="EXP">EXP: <strong>current date + 5yrs</strong></li>
-                            <br>
-                            <br>
-                            <li>CLASS: <strong>B</strong></li> -->
-                        <!-- </ul> -->
-                        <div id="output"></div>
-                        <div id="name"></div>
-                        <ul>
-                            <li id="DOB"></li>
-                            <li id="EXP"></li>
-                        </ul>
-                        <img src="assets/barcode.svg">
-                    </div>
-                </div>
-                
             </div>
         </div>
+        <br>
+
+        <div class="card-container mx-auto">
+            <div class="card-id-header">
+                <span class="card-text">DRIVER'S LICENSE</span>
+            </div>
+            <div class="card-body">
+                <div class="card-body__pics">
+                    <img id="driverImage" src="assets/profile-pic.png" alt="Driver's Picture" class="card-body__pics-profile-img" />
+                    <img src="assets/signature.png" alt="Driver's Signature" class="card-body__pics-signature-img" />
+                </div>
+                <div class="card-info">
+                    <div class="card-info__id">
+                        <span class="card-info__id-id"><span>ID: 4573-13425-22</span></span>
+                        <span class="card-info__id-name"><span id="NAME">JOHN SMITH</span></span>
+                    </div>
+                    <div class="card-details">
+                        <div class="card-details__group1">
+                            <div class="card-dob">
+                                <span class="card-details__title"><span>DOB</span></span>
+                                <span class="card-details__field" id="DOB"><span >1/1/1991</span></span>
+                            </div>
+                            <div class="card-sex">
+                                <span class="card-details__title"><span>SEX</span></span>
+                                <span class="card-details__field"><span id="SEX">M</span></span>
+                            </div>
+                        </div>
+                        <div class="card-details__group2">
+                            <div class="card-ntn">
+                                <span class="card-details__title"><span>NTN</span></span>
+                                <span class="card-details__field"><span id="NTN">US</span></span>
+                            </div>
+                            <div class="card-exp">
+                                <span class="card-details__title"><span>EXP</span></span>
+                                <span class="card-details__field"><span id="EXP">1/1/2026</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-class">
+                        <span class="card-details__title"><span>CLASS</span></span>
+                        <span class="card-details__field">B</span>
+                    </div>
+                    <img src="assets/Barcode.png" alt="Barcode" class="card-barcode" />
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="card_generate.js"></script>
 </html>

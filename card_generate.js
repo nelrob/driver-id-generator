@@ -1,31 +1,25 @@
-var output = document.getElementById("output");
-var idImage = document.getElementById("pic");
-let name = document.getElementById("nameInput");
-var dob = document.getElementById("DOB");
-var expiry = document.getElementById("EXP");
 const button = document.getElementById("generate");
-
 button.addEventListener("click", async () => {
     console.log("%c\n\nStart of new generation", `font-size: 1.35em`);
     console.log("Button clicked function started");
 
+    // Runs getDetails() and waits for that its results to proceed with remaining promises
     const details = await getDetails().then((res) => {
         console.log("response of getDetails() received");
         console.log("response: ", res);
 
-        // * "Object destructuring": Syntax to quick extract values from an array and assign to variables
         let [ageValue, genderValue] = res;
 
         console.log(`genderValue: ${genderValue}`, `ageValue: ${ageValue}`);
 
-        // Runs the promises
+        // Runs remaining promises
         getPicture(genderValue);
         setBirthDate(ageValue);
         setExpiryDate();
     });
 });
 
-// Trait object that stores the trait needed from each URL
+// * Trait object that stores the trait needed from each URL
 let Traits = {
     age: {
         url: "agify",
@@ -52,17 +46,16 @@ function getTraitVal(string, object) {
     return result;
 }
 
+// Makes first 3 API calls for age, gender, nationality 
 async function getDetails() {
     console.log("Entered getDetails()");
-
+    let nameInput = document.getElementById("nameInput");
     let name = nameInput.value;
 
     // * String array of trait properties (age, gender, nationality)
     let list = Object.keys(Traits);
 
-    // * Put the requests in an <array.map()> function, not much different from a `forEach` loop
-    // * This fills <requests[]> with the results of the fetch requests
-    // * The values inside <requests[]> do not matter, we just need this for the Promise.all()
+    // * Array map that iterates through traits - fills <requests[]> with the results of the fetch requests
     let requests = list.map(async (trait) => {
         console.log(`<${trait}> request being made`);
 
@@ -82,11 +75,12 @@ async function getDetails() {
 
                 console.log("Result: ", Traits[trait].result);
             })
-            .catch((err) => console.error(err)); // catch error
+            // Catch error
+            .catch((err) => console.error(err)); 
     });
 
-  // * Promise.all() allows us to wait for all the fetch requests to finish before running the code
-  // * This should ensure that this function will return the <results[]> array containing <ageValue> and <genderValue>
+    // * Waits for all the fetch requests to finish before running the code
+    // * Ensures this function will return the <results[]> array containing <ageValue> and <genderValue>
     return Promise.all(requests)
     .then(() => {
         if (name != "") {
@@ -98,46 +92,62 @@ async function getDetails() {
 
             console.log("Promise Results: ", results);
 
-            output.innerHTML = `<p>Name: ${name}</p>
-            <p>Age: ${ageValue}</p>
-            <p>Sex: ${genderValue}</p>
-            <p>Nationality: ${ntnValue}</p>
-            <p>Class: <strong>B</strong>`; // output to card info
+            // Output name, gender, nationality to card info
+            document.getElementById("NAME").innerHTML = `${name}`;
+            document.getElementById("SEX").innerHTML = `${genderValue}`;
+            document.getElementById("NTN").innerHTML = `${ntnValue}`;
 
             return results;
         }
     })
-    .catch((err) => console.error(err)); // catch error
+    // Catch error
+    .catch((err) => console.error(err)); 
 }
 
+// Generates ID image with genderValue from getDetails()
 async function getPicture(genderValue) {
     let request = `https://randomuser.me/api/?gender=` + genderValue;
     console.log(`getPictureGenderVal: ${genderValue}`);
 
+    // Makes the API call
     fetch(request, { method: "GET" })
     .then(function (response) {
         return response.json();
     })
     .then((data) => {
         console.log(data);
+
+        var idImage = document.getElementById("driverImage");
+
+        // Gets image URL and outputs to card info
         let idImageURL = data.results[0].picture.large;
         console.log(idImageURL);
-        idImage.innerHTML = `<img src='${idImageURL}'></img>`; // output to card info
+        idImage.src = `${idImageURL}`;
     });
 }
 
+// Generates DOB field
 async function setBirthDate(ageValue) {
+    var dob = document.getElementById("DOB");
+    
     const today = new Date();
-    today.setFullYear(today.getFullYear() - ageValue); // subtract age years to the current date
-    const dateString = today.toLocaleDateString(); // convert to string
+    // Subtracts age years from current date and convert to string
+    today.setFullYear(today.getFullYear() - ageValue);
+    const dateString = today.toLocaleDateString();
 
-    dob.innerHTML = `DOB: <strong>${dateString}</strong>`; // output to card info
+    // Outputs to card info
+    dob.innerHTML = `${dateString}`; 
 }
 
+// Generates EXP field
 async function setExpiryDate() {
-    const today = new Date();
-    today.setFullYear(today.getFullYear() + 3); // add 3 years to the current date
-    const dateString = today.toLocaleDateString(); // convert to string
+    var expiry = document.getElementById("EXP");
 
-    expiry.innerHTML = `EXP: <strong>${dateString}</strong>`; // output to card info
+    const today = new Date();
+    // Subtract age years from current date and convert to string
+    today.setFullYear(today.getFullYear() + 3); 
+    const dateString = today.toLocaleDateString();
+
+    // Outputs to card info
+    expiry.innerHTML = `${dateString}`; 
 }

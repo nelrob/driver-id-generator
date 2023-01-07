@@ -1,0 +1,90 @@
+@mixin fontStyle($weight, $color, $size) {
+    font-weight: $weight;
+    color: $color;
+    font-size: $size;
+}
+
+.card-container {
+    width: 815px;
+    height: 545px;
+
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    background: url('../assets/id-bg.png');
+
+    text-transform: uppercase;
+    font-family: Arial;
+}
+.card {
+    &-id-header {
+        @include fontStyle (900, white, 35px);
+        height: 90px;
+        border-radius: 20px 20px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(36, 118, 186, 1);
+    }
+
+    &-body {
+        display: flex;
+        &__pics {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding: 10px 20px;
+            &-profile-img {
+                width: 250px;
+                height: 250px;
+                margin-bottom: 35px;
+                border-radius: 10px;
+            }
+        }
+    }
+
+    &-info {
+        display: flex;
+        flex-direction: column;
+
+        padding: 5px 20px;
+        &__id {
+            display: flex;
+            flex-direction: column;
+
+            margin-bottom: 50px;
+            &-id {
+                @include fontStyle(400, Black, 30px);
+            }
+            &-name {
+                @include fontStyle(700, Black, 30px);
+            }
+        }
+    }
+    
+    &-details {
+        display: flex;
+        justify-content: space-between;
+
+        margin-bottom: 56px;
+        &__title{
+            @include fontStyle (400,rgba(36, 118, 186, 1), 25px);
+            margin-right: 15px;
+        }
+        &__field{
+            @include fontStyle (700,rgba(0,0,0, 1), 25px);
+        }
+    }
+
+    &-class {
+        margin-bottom: 50px;
+    }
+}
+
+
+
+
+
+
+
